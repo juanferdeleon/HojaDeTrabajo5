@@ -86,8 +86,8 @@ class Process:
         
 
 #Main
-# Generador de procesos
-def proceso_generator(env, components):
+#Crea los procesos
+def processes(env, components):
     for i in range(process_Amount):
         creating_Time = math.exp(1.0/Interval)
         Process(i, env, components)
@@ -95,7 +95,7 @@ def proceso_generator(env, components):
 
 env = simpy.Environment()  # Environment
 components = Components(env)  # Componentes (RAM Y CPUS)
-env.process(proceso_generator(env, components))  # Se crean procesos
+env.process(processes(env, components))  # Se crean procesos
 env.run()
         
 avar = statistics.mean(ProcessTimes)  # Tiempo promedio       
