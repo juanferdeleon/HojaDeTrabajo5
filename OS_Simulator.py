@@ -101,6 +101,5 @@ env.run()
 avar = statistics.mean(ProcessTimes)  # Tiempo promedio       
 desvEst = statistics.stdev(ProcessTimes)  # Desviacion Estandar
 
-print ("\nTiempo promedio: ", avar, ", Desviacion Estandar: ", \
-      desvEst, "\n\n")
+print ("\nTiempo promedio: ", avar, ", Desviacion Estandar: ", desvEst, "\n\n")
 
