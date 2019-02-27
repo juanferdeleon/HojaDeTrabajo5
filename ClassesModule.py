@@ -15,12 +15,13 @@ class Components:
         self.CPU = simpy.Resource(env, capacity = CPU_Amount)
         self.RAM = simpy.Container(env, init = RAM_Capacity, capacity = RAM_Capacity)
         
+        
 
 #Clase que define un proceso
 class Process:
 
     #Atributos
-    def __init__(self, id, env, components):
+    def __init__(self, id, env, components, instructions, ioTime):
         self.id = id
         self.env = env
         self.components = components
@@ -30,6 +31,8 @@ class Process:
         self.initial_Time = 0
         self.end_Time = 0
         self.total_Time = 0
+        self.proceso = env.process(self.procesar(env, components, instructions, ioTime))
+
 
     #Proceso
     def procesar(self, env, components, instructions, ioTime):
@@ -43,12 +46,9 @@ class Process:
             nxt = 0
 
             while not self.terminated:
-                with component.CPU.request() as request:
+                with components.CPU.request() as request:
                     print('%s: CPU %d (Estado: Wait)' % (self.id, env.now))
                     yield request
-
-                    #Proceso CPU
-                    print('%s: CPU %d (Estado: Running)' % (self.id, env.now))
                     
                     for i in range (instructions):
                         if self.instructions > 0:
@@ -70,9 +70,6 @@ class Process:
             components.RAM.put(self.required_RAM)  # Regresa la RAM que se utilizo
 
         self.end_Time = env.now
-        self.total_Time = int(self.finishedTime - self.createdTime)
-        
+        self.total_Time = int(self.end_Time - self.initial_Time)
         return self.total_Time
-            
-        
         
