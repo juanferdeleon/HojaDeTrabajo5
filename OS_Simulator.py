@@ -9,7 +9,7 @@ import statistics
 
 # Modificar caracteristicas
 
-CPU_Amount = 2 #CPUS
+CPU_Amount = 1 #CPUS
 RAM_Capacity = 100 #Capacidad de RAM
 process_Amount = 100 # Cantidad de procesos
 Interval = 1 # Intervalo de los procesos
@@ -64,7 +64,7 @@ class Process:
                     for i in range (instructions):
                         if self.instructions > 0:
                             self.instructions -= 1
-                            nxt = random.randint(0, 1)
+                            nxt = random.randint(1, 2)
 
                     yield env.timeout(1)# Tiempo de espera de CPU
 
