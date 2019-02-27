@@ -98,9 +98,9 @@ components = Components(env)  # Componentes (RAM Y CPUS)
 env.process(proceso_generator(env, components))  # Se crean procesos
 env.run()
         
-avar = statistics.mean(ProcessTimes)  # Se obtiene el tiempo promedio       
-desvEst = statistics.stdev(ProcessTimes)  # Se obtiene la desviacion estandar
+avar = statistics.mean(ProcessTimes)  # Tiempo promedio       
+desvEst = statistics.stdev(ProcessTimes)  # Desviacion Estandar
 
-print ("El promedio de tiempo es de: ", avar, ", y su desviacion estandar es de: ", \
-      desvEst)
+print ("\nTiempo promedio: ", avar, ", Desviacion Estandar: ", \
+      desvEst, "\n\n")
 
