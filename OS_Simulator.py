@@ -19,7 +19,7 @@ ProcessTimes = []  # Tiempos
 random.seed(15)
 
 
-#Componentes a utilizar (RAM Y No. DE CPU)
+#Componentes a utilizar (RAM Y CPU)
 class Components:
 
     def __init__(self, env):
