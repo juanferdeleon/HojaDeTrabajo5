@@ -89,7 +89,7 @@ class Process:
 #Crea los procesos
 def processes(env, components):
     for i in range(process_Amount):
-        creating_Time = math.exp(1.0/Interval)
+        creating_Time = random.expovariate(1.0/Interval)
         Process(i, env, components)
         yield env.timeout(creating_Time)  # Tiempo que tardara en crearse cada proceso
 
